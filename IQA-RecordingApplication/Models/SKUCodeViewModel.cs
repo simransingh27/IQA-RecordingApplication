@@ -8,7 +8,7 @@ namespace IQA_RecordingApplication.Models
 {
     public class SKUCodeViewModel
     {
-        [Required]
+     
         [Key]
         public String SKUCodeId { get; set; }
         public String SKUCodeDescription { get; set; }

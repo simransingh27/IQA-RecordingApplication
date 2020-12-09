@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using IQA_RecordingApplication.Contracts;
 using IQA_RecordingApplication.Data;
+using IQA_RecordingApplication.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -25,8 +26,8 @@ namespace IQA_RecordingApplication.Controllers
         public ActionResult Index()
         {
             var sKUCodeValue= _repo.FindAll().ToList();
-            var model = _mapper.Map<ICollection<SKUCode>, ICollection<SKUCode>>(sKUCodeValue);
-            return View();
+            var model = _mapper.Map<List<SKUCode>, List<SKUCodeViewModel>>(sKUCodeValue);
+            return View(model);
         }
 
         // GET: SKUCodeController/Details/5
