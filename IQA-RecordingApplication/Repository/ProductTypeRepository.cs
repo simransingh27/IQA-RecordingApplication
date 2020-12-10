@@ -37,6 +37,12 @@ namespace IQA_RecordingApplication.Repository
             return _db.ProductTypes.ToList();
         }
 
+        public bool IsExists(int Id)
+        {
+            var exists = _db.ProductTypes.Any(q => q.ProductTypeId == Id);
+            return exists;
+        }
+
         public bool Save()
         {
           return  _db.SaveChanges() >0;

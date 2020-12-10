@@ -9,11 +9,11 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table id="tblData" class="table">
     <thead>
         <tr>
             <th>
-               <h2>SKU Code: </h2>
+                <h5>SKU Code </h5>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SKUCodeDescription)
@@ -28,26 +28,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SKUCodeId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SKUCodeDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.SKUCodeId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.SKUCodeId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.SKUCodeId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SKUCodeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SKUCodeDescription)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.SKUCodeId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.SKUCodeId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.SKUCodeId" onclick="return confirm('Are you sure you want to delete this record?')">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $('#tblData').DataTable();
+        });
+    </script>
+}

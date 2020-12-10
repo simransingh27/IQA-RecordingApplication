@@ -8,5 +8,6 @@ namespace IQA_RecordingApplication.Contracts
 {
     interface ICustomerCode : IRepositoryBase<CustomerCode>
     {
+        bool IsExitsCC(String Id);
     }
 }

@@ -77,8 +77,11 @@ namespace IQA_RecordingApplication.Data.Migrations
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SKUCodeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("SKUCodeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SkuId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -91,7 +94,7 @@ namespace IQA_RecordingApplication.Data.Migrations
 
                     b.HasIndex("ProductTypeId");
 
-                    b.HasIndex("SKUCodeId");
+                    b.HasIndex("SkuId");
 
                     b.ToTable("ErrorMessageTracks");
                 });
@@ -141,15 +144,20 @@ namespace IQA_RecordingApplication.Data.Migrations
                     b.ToTable("ProductTypes");
                 });
 
-            modelBuilder.Entity("IQA_RecordingApplication.Data.SKUCode", b =>
+            modelBuilder.Entity("IQA_RecordingApplication.Data.SKUCode1", b =>
                 {
-                    b.Property<string>("SKUCodeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("SKUCodeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SKUCodeDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SKU_Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -158,25 +166,6 @@ namespace IQA_RecordingApplication.Data.Migrations
                     b.HasKey("SKUCodeId");
 
                     b.ToTable("SKUCodes");
-                });
-
-            modelBuilder.Entity("IQA_RecordingApplication.Models.SKUCodeViewModel", b =>
-                {
-                    b.Property<string>("SKUCodeId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("SKUCodeDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("SKUCodeId");
-
-                    b.ToTable("SKUCodeViewModel");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -408,9 +397,9 @@ namespace IQA_RecordingApplication.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("IQA_RecordingApplication.Data.SKUCode", "SKUCode")
+                    b.HasOne("IQA_RecordingApplication.Data.SKUCode1", "SKUCode")
                         .WithMany()
-                        .HasForeignKey("SKUCodeId");
+                        .HasForeignKey("SkuId");
 
                     b.Navigation("CustomerCode");
 

@@ -1,4 +1,8 @@
+using AutoMapper;
+using IQA_RecordingApplication.Contracts;
 using IQA_RecordingApplication.Data;
+using IQA_RecordingApplication.Mappings;
+using IQA_RecordingApplication.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -24,6 +28,15 @@ namespace IQA_RecordingApplication
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("Connection")));
+            services.AddScoped<ISKUCode, SKUCodeRepository>();
+            services.AddScoped<IProduct, ProductRepository>();
+            services.AddScoped<IProductType, ProductTypeRepository>();
+            services.AddScoped<ICustomerCode, CustomerCodeRepository>();
+            services.AddScoped<IErrorMessage, ErrorMessageRepository>();
+            services.AddScoped<IErrorMessageTracker, ErrorMessageTrackerRepository>();
+
+            services.AddAutoMapper(typeof(AutoMapperClass));
+
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();

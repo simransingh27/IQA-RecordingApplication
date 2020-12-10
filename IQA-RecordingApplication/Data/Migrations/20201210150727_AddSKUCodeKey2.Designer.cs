@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IQA_RecordingApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20201209141507_AddedAllDatabaseTables2")]
-    partial class AddedAllDatabaseTables2
+    [Migration("20201210150727_AddSKUCodeKey2")]
+    partial class AddSKUCodeKey2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,8 +79,11 @@ namespace IQA_RecordingApplication.Data.Migrations
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("SKUCodeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("SKUCodeId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("SkuId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("datetime2");
@@ -93,7 +96,7 @@ namespace IQA_RecordingApplication.Data.Migrations
 
                     b.HasIndex("ProductTypeId");
 
-                    b.HasIndex("SKUCodeId");
+                    b.HasIndex("SkuId");
 
                     b.ToTable("ErrorMessageTracks");
                 });
@@ -143,15 +146,20 @@ namespace IQA_RecordingApplication.Data.Migrations
                     b.ToTable("ProductTypes");
                 });
 
-            modelBuilder.Entity("IQA_RecordingApplication.Data.SKUCode", b =>
+            modelBuilder.Entity("IQA_RecordingApplication.Data.SKUCode1", b =>
                 {
-                    b.Property<string>("SKUCodeId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("SKUCodeId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("SKUCodeDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SKU_Code")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -183,7 +191,8 @@ namespace IQA_RecordingApplication.Data.Migrations
 
                     b.HasIndex("NormalizedName")
                         .IsUnique()
-                                                .HasFilter("[NormalizedName] IS NOT NULL");
+                        .HasDatabaseName("RoleNameIndex")
+                        .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
                 });
@@ -266,11 +275,13 @@ namespace IQA_RecordingApplication.Data.Migrations
 
                     b.HasKey("Id");
 
-      
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
 
-
-
-                   
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex")
+                        .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
                 });
@@ -367,7 +378,7 @@ namespace IQA_RecordingApplication.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                  
+                    b.Navigation("ErrorMessageTrack");
                 });
 
             modelBuilder.Entity("IQA_RecordingApplication.Data.ErrorMessageTrack", b =>
@@ -388,11 +399,17 @@ namespace IQA_RecordingApplication.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("IQA_RecordingApplication.Data.SKUCode", "SKUCode")
+                    b.HasOne("IQA_RecordingApplication.Data.SKUCode1", "SKUCode")
                         .WithMany()
-                        .HasForeignKey("SKUCodeId");
+                        .HasForeignKey("SkuId");
 
-                   
+                    b.Navigation("CustomerCode");
+
+                    b.Navigation("Product");
+
+                    b.Navigation("ProductType");
+
+                    b.Navigation("SKUCode");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -17,7 +17,7 @@ namespace IQA_RecordingApplication.Mappings
             CreateMap<ErrorMessage, CreateErrorMessageViewModel>().ReverseMap();
             CreateMap<ErrorMessage, DisplayErrorMessageViewModel>().ReverseMap();
             CreateMap<CustomerCode, DetailsCustomerCodeViewModel>().ReverseMap();
-            CreateMap<SKUCode, SKUCodeViewModel>().ReverseMap();
+            CreateMap<SKUCode1, SKUCodeViewModel>().ReverseMap();
             CreateMap<ErrorMessageTrack, ErrorMessageTrackViewModel>().ReverseMap();
         }
     }

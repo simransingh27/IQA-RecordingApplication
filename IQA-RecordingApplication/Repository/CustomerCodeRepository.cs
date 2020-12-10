@@ -39,6 +39,18 @@ namespace IQA_RecordingApplication.Repository
             return cCodes;
         }
 
+        public bool IsExists(int Id)
+        {
+           
+            throw new NotImplementedException();
+        }
+
+        public bool IsExitsCC(string Id)
+        {
+            var exists = _db.CustomerCodes.Any(q => q.CustomerCodeId == Id);
+            return exists;
+        }
+
         public bool Save()
         {
         return _db.SaveChanges() >0;

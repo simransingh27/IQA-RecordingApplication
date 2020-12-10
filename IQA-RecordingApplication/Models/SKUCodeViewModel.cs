@@ -10,10 +10,11 @@ namespace IQA_RecordingApplication.Models
     {
      
         [Key]
-        public String SKUCodeId { get; set; }
+        public int SKUCodeId { get; set; }
+        public String SKU_Code { get; set; }
         public String SKUCodeDescription { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime? CreatedAt { get; set; }
 
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

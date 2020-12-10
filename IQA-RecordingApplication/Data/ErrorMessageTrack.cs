@@ -20,9 +20,9 @@ namespace IQA_RecordingApplication.Data
         public ProductType ProductType { get; set; }
         public int ProductTypeId { get; set; }
             
-        [ForeignKey("SKUCodeId")]
-        public SKUCode SKUCode { get; set; }
-        public String SKUCodeId { get; set; }
+        [ForeignKey("SkuId")]
+        public SKUCode1 SKUCode { get; set; }
+        public int SKUCodeId { get; set; }
       
         [ForeignKey("ProductId")]
         public Product Product { get; set; }

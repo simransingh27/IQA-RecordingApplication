@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace IQA_RecordingApplication.Contracts
 {
-   public interface ISKUCode : IRepositoryBase<SKUCode>
+   public interface ISKUCode : IRepositoryBase<SKUCode1>
     {
+        public bool IsExitsSKU(String Id);
+        public bool FindById(String Id);
     }
 }

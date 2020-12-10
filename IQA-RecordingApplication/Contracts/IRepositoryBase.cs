@@ -13,7 +13,7 @@ namespace IQA_RecordingApplication.Contracts
         bool Create(T entity);
         bool Update(T entity);
         bool Delete(T entity);
-
+        bool IsExists(int Id);
         bool Save();
 
 

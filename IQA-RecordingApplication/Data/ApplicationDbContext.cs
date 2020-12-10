@@ -18,8 +18,8 @@ namespace IQA_RecordingApplication.Data
         public DbSet<ErrorMessage> ErrorMessages { get; set; }
         public DbSet<ErrorMessageTrack> ErrorMessageTracks { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<SKUCode> SKUCodes { get; set; }
-       //public DbSet<IQA_RecordingApplication.Models.SKUCodeViewModel> SKUCodeViewModel { get; set; }
+        public DbSet<SKUCode1> SKUCodes { get; set; }
+        //public DbSet<IQA_RecordingApplication.Models.SKUCodeViewModel> SKUCodeViewModel { get; set; }
 
 
 
