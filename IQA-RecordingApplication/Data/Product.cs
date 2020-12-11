@@ -14,6 +14,7 @@ namespace IQA_RecordingApplication.Data
         public String ProductName { get; set; }
 
         public String ProductDescription { get; set; }
+        public String Tag { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

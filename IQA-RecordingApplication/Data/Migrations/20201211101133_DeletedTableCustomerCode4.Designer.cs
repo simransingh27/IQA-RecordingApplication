@@ -4,14 +4,16 @@ using IQA_RecordingApplication.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IQA_RecordingApplication.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201211101133_DeletedTableCustomerCode4")]
+    partial class DeletedTableCustomerCode4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,9 +75,6 @@ namespace IQA_RecordingApplication.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerCodeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -92,8 +91,6 @@ namespace IQA_RecordingApplication.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("ErrorMessageTrackId");
-
-                    b.HasIndex("CustomerCodeId");
 
                     b.HasIndex("ProductId");
 
@@ -118,9 +115,6 @@ namespace IQA_RecordingApplication.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tag")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -392,12 +386,6 @@ namespace IQA_RecordingApplication.Data.Migrations
 
             modelBuilder.Entity("IQA_RecordingApplication.Data.ErrorMessageTrack", b =>
                 {
-                    b.HasOne("IQA_RecordingApplication.Data.CustomerCode1", "CustomerCode")
-                        .WithMany()
-                        .HasForeignKey("CustomerCodeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("IQA_RecordingApplication.Data.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")
@@ -413,8 +401,6 @@ namespace IQA_RecordingApplication.Data.Migrations
                     b.HasOne("IQA_RecordingApplication.Data.SKUCode1", "SKUCode")
                         .WithMany()
                         .HasForeignKey("SkuId");
-
-                    b.Navigation("CustomerCode");
 
                     b.Navigation("Product");
 

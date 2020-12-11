@@ -13,8 +13,8 @@ namespace IQA_RecordingApplication.Data
         public int ErrorMessageTrackId { get; set; }
        
         [ForeignKey("CustomerCodeId")]
-        public CustomerCode CustomerCode { get; set; }
-        public string CustomerCodeId { get; set; }
+        public CustomerCode1 CustomerCode { get; set; }
+        public int CustomerCodeId { get; set; }
     
         [ForeignKey("ProductTypeId")]
         public ProductType ProductType { get; set; }

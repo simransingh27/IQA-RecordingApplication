@@ -45,7 +45,7 @@ namespace IQA_RecordingApplication.Repository
 
         public bool Save()
         {
-          return  _db.SaveChanges() >0;
+            return _db.SaveChanges() > 0;
         }
 
         public bool Update(ProductType entity)

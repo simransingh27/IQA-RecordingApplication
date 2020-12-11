@@ -14,7 +14,7 @@ namespace IQA_RecordingApplication.Data
 
         }
         public DbSet<ProductType> ProductTypes { get; set; }
-        public DbSet<CustomerCode> CustomerCodes { get; set; }
+        public DbSet<CustomerCode1> CustomerCodes { get; set; }
         public DbSet<ErrorMessage> ErrorMessages { get; set; }
         public DbSet<ErrorMessageTrack> ErrorMessageTracks { get; set; }
         public DbSet<Product> Products { get; set; }

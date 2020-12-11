@@ -15,7 +15,7 @@ namespace IQA_RecordingApplication.Models
         public String ProductName { get; set; }
 
         public String ProductDescription { get; set; }
-
+        public String Tag { get; set; }
 
         public SKUCodeViewModel SKUCode { get; set; }
         public String SKUCodeId { get; set; }

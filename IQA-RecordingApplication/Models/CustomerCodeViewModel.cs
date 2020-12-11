@@ -8,8 +8,10 @@ namespace IQA_RecordingApplication.Models
 {
     public class CreateCustomerCodeViewModel
     {
+        [Key]
+        public int CustomerCodeId { get; set; }
         [Required]
-        public String CustomerCodeId { get; set; }
+        public String CustomerCode { get; set; }
         public String CustomerCodeDescription { get; set; }
         public DateTime CreatedAt { get; set; }
 
@@ -18,8 +20,10 @@ namespace IQA_RecordingApplication.Models
 
     public class DetailsCustomerCodeViewModel
     {
-        
-        public String CustomerCodeId { get; set; }
+        [Key]
+        public int CustomerCodeId { get; set; }
+        [Required]
+        public String CustomerCode { get; set; }
         public String CustomerCodeDescription { get; set; }
         public DateTime CreatedAt { get; set; }
 

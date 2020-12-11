@@ -12,6 +12,7 @@ namespace IQA_RecordingApplication.Data
       [Key]
         public int ProductTypeId { get; set; }
         public string ProductTypeName { get; set; }
+        public string ProductTypeDescription { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
     }

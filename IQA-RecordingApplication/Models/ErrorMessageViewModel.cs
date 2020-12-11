@@ -11,17 +11,11 @@ namespace IQA_RecordingApplication.Models
 {
     public class CreateErrorMessageViewModel
     {
+        [Key]
         public int ErrorMessageId { get; set; }
-       [Required]
+      
+        [Required]
         public String Message { get; set; }
-
-        
-        public ErrorMessageTrackViewModel ErrorMessageTrack { get; set; }
-        public int ErrorMessageTrackId { get; set; }
-
-        public DisplayErrorMessageViewModel ErrorMessage { get; set; }
-
-        public IEnumerable<SelectListItem> ErrorMessages { get; set; }
     }
 
     public class EditErrorMessageViewModel

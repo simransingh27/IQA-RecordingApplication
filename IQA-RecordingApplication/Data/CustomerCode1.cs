@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace IQA_RecordingApplication.Data
 {
-    public class CustomerCode
+    public class CustomerCode1
     {
         [Key]
-        public String CustomerCodeId { get; set; }
+        public int CustomerCodeId { get; set; }
+        public String CustomerCode { get; set; }
         public String CustomerCodeDescription { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }

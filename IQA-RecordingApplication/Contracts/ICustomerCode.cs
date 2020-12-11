@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IQA_RecordingApplication.Contracts
 {
-    interface ICustomerCode : IRepositoryBase<CustomerCode>
+    public interface ICustomerCode : IRepositoryBase<CustomerCode1>
     {
         bool IsExitsCC(String Id);
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace IQA_RecordingApplication.Contracts
 {
-    interface IProductType : IRepositoryBase<ProductType>
+  public  interface IProductType : IRepositoryBase<ProductType>
     {
     }
 }

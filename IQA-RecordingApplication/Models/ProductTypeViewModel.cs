@@ -9,6 +9,7 @@ namespace IQA_RecordingApplication.Models
 {
     public class ProductTypeViewModel
     {
+        [Key]
         public int ProductTypeId { get; set; }
         [Required]
         public string ProductTypeName { get; set; }
